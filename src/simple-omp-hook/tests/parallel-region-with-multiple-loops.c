@@ -11,7 +11,7 @@
 
 // Size of vectors.
 #ifndef N
-#define N 8
+#define N 16
 #endif
 
 int loop_0[N];
@@ -24,7 +24,7 @@ int main() {
   #pragma omp parallel num_threads(1)
   {
     loop_index = 0;
-    #pragma omp for schedule(dynamic)
+    #pragma omp for schedule(dynamic,4)
     for (i = 0; i < N; i++) {
       // printf("loop: %d, thread: %lu, iteration: %d\n", loop_index, omp_get_thread_num(), i);
       loop_0[i] = omp_get_thread_num();
